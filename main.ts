@@ -3,6 +3,8 @@
 // desc:   short description
 // script: js
 
+/// <reference path="src/some-file.ts" />
+
 let x = 0;
 let y = 0;
 let c = 8;
