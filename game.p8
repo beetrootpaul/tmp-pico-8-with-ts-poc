@@ -9,46 +9,57 @@ transpiler.
 please report any bugs to:
 https://github.com/agronkabashi/jspicl/issues
 ]]--
-local lol2 = (function ()
-  function mydraw(x, y, c)
-    circfill(x, y, 10, c)
-  end
-  return {
-    mydraw = mydraw
+local class_gamestategameplay = function (...)
+  local this = {}
+  local classinstance = {
+    constructor = function ()
+      this.x=0
+      this.y=0
+      this.color=8
+    end,
+    update = function ()
+      if btn(0) and this.x > 0 then
+        this.x-=1
+      end
+      if btn(1) and this.x < 127 then
+        this.x+=1
+      end
+      if btn(2) and this.y > 0 then
+        this.y-=1
+      end
+      if btn(3) and this.y < 127 then
+        this.y+=1
+      end
+      if btn(4) then
+        this.color=(this.color - 1) % 16
+      end
+      if btn(5) then
+        this.color=(this.color + 1) % 16
+      end
+      return this
+    end,
+    draw = function ()
+      circfill(this.x, this.y, 10, this.color)
+    end
   }
-end)()
-local x = 0
-local y = 0
-local c = 8
-function myupdate()
-  if btn(0) and x > 0 then
-    x-=1
-  end
-  if btn(1) and x < 127 then
-    x+=1
-  end
-  if btn(2) and y > 0 then
-    y-=1
-  end
-  if btn(3) and y < 127 then
-    y+=1
-  end
-  if btn(4) and c > 1 then
-    c-=1
-  end
-  if btn(5) and c < 15 then
-    c+=1
-  end
+  if (classinstance.constructor) classinstance.constructor(...)
+  return classinstance
+end
+local currentgamestate = nil
+local nextgamestate = nil
+function _init()
+  currentgamestate=class_gamestategameplay()
 end
 function _update()
-  myupdate()
-end
-function _draw()
-  cls()
-  lol2.mydraw(x, y, c)
-end
-_update()
-_draw()
+  nextgamestate=(function () if currentgamestate == nil or currentgamestate == nil then return nil else return currentgamestate.update() end end)()
+  end
+  function _draw()
+    cls()
+    currentgamestate.draw()
+  end
+  _init()
+  _update()
+  _draw()
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

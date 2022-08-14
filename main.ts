@@ -3,31 +3,27 @@
 // desc:   short description
 // script: js
 
-/// <reference path="src/some-file.ts" />
+/// <reference path="src/gameStates/GameState.ts" />
+/// <reference path="src/gameStates/GameStateTitle.ts" />
+/// <reference path="src/gameStates/GameStateGameplay.ts" />
 
-let x = 0;
-let y = 0;
-let c = 8;
-
-function myUpdate(): void {
-    if (btn(0) && x > 0) x--;
-    if (btn(1) && x < 127) x++;
-    if (btn(2) && y > 0) y--;
-    if (btn(3) && y < 127) y++;
-    if (btn(4) && c > 1) c--;
-    if (btn(5) && c < 15) c++;
-}
+let currentGameState: GameState;
+let nextGameState: GameState;
 
 function _init() {
+    currentGameState = new GameStateGameplay();
 }
 
 function _update() {
-    myUpdate();
+    nextGameState = currentGameState?.update();
 }
 
 function _draw() {
     cls();
-    lol2.myDraw(x, y, c);
+    currentGameState.draw();
+    // if (nextGameState) {
+    //     currentGameState = nextGameState;
+    // }
 }
 
 // do not delete these lines (for the build process)
