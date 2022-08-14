@@ -9,18 +9,17 @@ transpiler.
 please report any bugs to:
 https://github.com/agronkabashi/jspicl/issues
 ]]--
-function newlol2()
+local lol2 = (function ()
   function mydraw(x, y, c)
     circfill(x, y, 10, c)
   end
   return {
     mydraw = mydraw
   }
-end
+end)()
 local x = 0
 local y = 0
 local c = 8
-local lol2 = newlol2()
 function myupdate()
   if btn(0) and x > 0 then
     x-=1

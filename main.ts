@@ -9,8 +9,6 @@ let x = 0;
 let y = 0;
 let c = 8;
 
-let lol2 = newLol2();
-
 function myUpdate(): void {
     if (btn(0) && x > 0) x--;
     if (btn(1) && x < 127) x++;
