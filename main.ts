@@ -9,6 +9,8 @@ let x = 0;
 let y = 0;
 let c = 8;
 
+let lol2 = newLol2();
+
 function myUpdate(): void {
     if (btn(0) && x > 0) x--;
     if (btn(1) && x < 127) x++;
@@ -27,7 +29,7 @@ function _update() {
 
 function _draw() {
     cls();
-    lol.myDraw(x, y, c);
+    lol2.myDraw(x, y, c);
 }
 
 // do not delete these lines (for the build process)
