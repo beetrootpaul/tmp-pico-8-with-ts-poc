@@ -9,9 +9,15 @@ transpiler.
 please report any bugs to:
 https://github.com/agronkabashi/jspicl/issues
 ]]--
-function mydraw(x, y, c)
-  circfill(x, y, 10, c)
-end
+local lol = nil
+(function (lol)
+  function mydraw(x, y, c)
+    circfill(x, y, 10, c)
+  end
+  lol.mydraw=mydraw
+end)(lol or lol={
+
+})
 local x = 0
 local y = 0
 local c = 8
@@ -40,7 +46,7 @@ function _update()
 end
 function _draw()
   cls()
-  mydraw(x, y, c)
+  lol.mydraw(x, y, c)
 end
 _update()
 _draw()

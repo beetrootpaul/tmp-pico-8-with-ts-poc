@@ -27,7 +27,7 @@ function _update() {
 
 function _draw() {
     cls();
-    myDraw(x, y, c);
+    lol.myDraw(x, y, c);
 }
 
 // do not delete these lines (for the build process)
