@@ -3,6 +3,10 @@
 // desc:   short description
 // script: js
 
+function myDraw(x: number, y: number, c: Color): void {
+    circfill(x, y, 10, c);
+}
+
 let x = 0;
 let y = 0;
 let c = 8;
@@ -16,10 +20,6 @@ function myUpdate(): void {
     if (btn(5) && c < 15) c++;
 }
 
-function myDraw(): void {
-    circfill(x, y, 10, c);
-}
-
 function _init() {
 }
 
@@ -29,7 +29,7 @@ function _update() {
 
 function _draw() {
     cls();
-    myDraw();
+    myDraw(x, y, c);
 }
 
 // do not delete these lines (for the build process)
