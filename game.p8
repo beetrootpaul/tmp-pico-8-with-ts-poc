@@ -12,7 +12,7 @@ https://github.com/agronkabashi/jspicl/issues
 local x = 0
 local y = 0
 local c = 8
-function _update()
+function myupdate()
   if btn(0) and x > 0 then
     x-=1
   end
@@ -32,9 +32,15 @@ function _update()
     c+=1
   end
 end
+function mydraw()
+  circfill(x, y, 10, c)
+end
+function _update()
+  myupdate()
+end
 function _draw()
   cls()
-  circfill(x, y, 10, c)
+  mydraw()
 end
 _update()
 _draw()

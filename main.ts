@@ -7,10 +7,7 @@ let x = 0;
 let y = 0;
 let c = 8;
 
-function _init() {
-}
-
-function _update() {
+function myUpdate(): void {
     if (btn(0) && x > 0) x--;
     if (btn(1) && x < 127) x++;
     if (btn(2) && y > 0) y--;
@@ -19,9 +16,20 @@ function _update() {
     if (btn(5) && c < 15) c++;
 }
 
+function myDraw(): void {
+    circfill(x, y, 10, c);
+}
+
+function _init() {
+}
+
+function _update() {
+    myUpdate();
+}
+
 function _draw() {
     cls();
-    circfill(x, y, 10, c);
+    myDraw();
 }
 
 // do not delete these lines (for the build process)

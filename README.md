@@ -10,4 +10,19 @@
 
 Then:
 
-Run `./bin/tspico8.js run -d <path_to_this_project_here>` and see PICO-8 start, with a red circle drawn in the top-left corner, which you can move around with arrows.   
+Run `./bin/tspico8.js run -d <path_to_this_project_here>` and see PICO-8 start, with a red circle drawn in the top-left
+corner, which you can move around with arrows.
+
+---
+
+In my local clone of `pico-8-typescript` I made PICO-8 **not** restart on changes, because it was stealing the focus
+from my IDE. My version of relevant piece of code is:
+
+```ts
+if (pPath.length > 0) {
+    if (!proc) {
+        console.log("Launching pico-8.");
+        proc = launchPico(pPath, gameFile, workDir);
+    }
+}
+```
