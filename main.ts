@@ -3,10 +3,6 @@
 // desc:   short description
 // script: js
 
-function myDraw(x: number, y: number, c: Color): void {
-    circfill(x, y, 10, c);
-}
-
 let x = 0;
 let y = 0;
 let c = 8;
